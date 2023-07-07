@@ -6,7 +6,7 @@ st.set_page_config(layout="wide")
 col1, col2 = st.columns(2)
 
 with col1:
-    st.image('images/photo.png', width=46 0)
+    st.image('images/photo.png', width=390)
 
 with col2:
     st.title('Biprajit Ghoshal')
@@ -26,13 +26,19 @@ Below you can find some of the apps I have built using Python. Feel free to cont
 """
 st.write(content2)
 
-col3, col4 = st.columns(2)
+col3, space, col4 = st.columns([3, 1, 3])
 
 df = pd.read_csv("data.csv", sep=";")
 with col3:
     for i, row in df[:10].iterrows():
         st.header(row["title"])
+        st.write(row["description"])
+        st.image("images/"+row["image"])
+        st.write(f"[Source Code]({row['url']})")
 
 with col4:
     for i, row in df[10:].iterrows():
         st.header(row["title"])
+        st.write(row["description"])
+        st.image("images/" + row["image"])
+        st.write(f"[Source Code]({row['url']})")
